@@ -9,7 +9,7 @@ API_KEY = "3f2a0969bbc5747a5739dbabd6ca1f35"
 def index():
     weather = None
     if request.method == "POST":
-        city = request.form["city"]
+        city = request.form["city"] + "," + request.form["country"]
         url = f"https://api.openweathermap.org/data/2.5/weather?q={city}&appid={API_KEY}&units=metric"
         response = requests.get(url)
         data = response.json()
