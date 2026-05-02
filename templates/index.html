@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Weather App</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: Arial, sans-serif;
+            background: #f0f4f8;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+        .card {
+            background: white;
+            border-radius: 16px;
+            overflow: hidden;
+            width: 380px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+        }
+        .header {
+            background: #185FA5;
+            padding: 24px;
+        }
+        .header p {
+            color: #B5D4F4;
+            font-size: 12px;
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
+            margin-bottom: 10px;
+        }
+        .search {
+            display: flex;
+            gap: 8px;
+        }
+        .search input {
+            flex: 1;
+            padding: 10px 14px;
+            border-radius: 8px;
+            border: none;
+            background: rgba(255,255,255,0.2);
+            color: white;
+            font-size: 15px;
+            outline: none;
+        }
+        .search input::placeholder { color: rgba(255,255,255,0.6); }
+        .search button {
+            padding: 10px 18px;
+            border-radius: 8px;
+            border: none;
+            background: white;
+            color: #185FA5;
+            font-weight: bold;
+            cursor: pointer;
+        }
+        .body { padding: 24px; }
+        .main-info {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 24px;
+        }
+        .city { font-size: 13px; color: #888; margin-bottom: 4px; }
+        .temp { font-size: 52px; font-weight: 500; line-height: 1; }
+        .desc { font-size: 14px; color: #888; margin-top: 6px; }
+        .icon img { width: 72px; height: 72px; }
+        .stats {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 10px;
+        }
+        .stat {
+            background: #f0f4f8;
+            border-radius: 8px;
+            padding: 12px;
+        }
+        .stat p:first-child { font-size: 11px; color: #888; margin-bottom: 4px; }
+        .stat p:last-child { font-size: 18px; font-weight: 500; }
+        .error { padding: 24px; color: #e24b4a; font-weight: 500; }
+    </style>
+</head>
+<body>
+<div class="card">
+    <div class="header">
+        <p>Weather App</p>
+        <div class="search">
+            <form method="POST" style="display:flex; gap:8px; width:100%">
+                <input type="text" name="city" placeholder="Enter city...">
+                <button type="submit">Search</button>
+            </form>
+        </div>
+    </div>
+    <div class="body">
+        {% if weather %}
+            {% if weather.error %}
+                <div class="error">City not found</div>
+            {% else %}
+                <div class="main-info">
+                    <div>
+                        <p class="city">{{ weather.city }}</p>
+                        <p class="temp">{{ weather.temp }}°C</p>
+                        <p class="desc">{{ weather.description }}</p>
+                    </div>
+                    <div class="icon">
+                        <img src="https://openweathermap.org/img/wn/{{ weather.icon }}@2x.png">
+                    </div>
+                </div>
+                <div class="stats">
+                    <div class="stat">
+                        <p>Humidity</p>
+                        <p>{{ weather.humidity }}%</p>
+                    </div>
+                    <div class="stat">
+                        <p>Feels like</p>
+                        <p>{{ weather.feels_like }}°C</p>
+                    </div>
+                    <div class="stat">
+                        <p>Wind</p>
+                        <p>{{ weather.wind }} km/h</p>
+                    </div>
+                </div>
+            {% endif %}
+        {% endif %}
+    </div>
+</div>
+</body>
+</html>
