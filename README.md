@@ -10,6 +10,7 @@ Simple weather app built with Flask and OpenWeatherMap API.
 - Country autocomplete (40+ countries)
 - Dynamic city photo background via Unsplash API
 - Always online — monitored by UptimeRobot
+- Mobile responsive design
 
 ## Tech stack
 
