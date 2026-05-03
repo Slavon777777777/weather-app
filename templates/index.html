@@ -22,6 +22,13 @@
         .header {
             background: #185FA5;
             padding: 24px;
+            background-size: cover;
+            background-position: center;
+        }
+        .header-overlay {
+            background: rgba(24,95,165,0.7);
+            border-radius: 8px;
+            padding: 12px;
         }
         .header p {
             color: #B5D4F4;
@@ -30,12 +37,8 @@
             text-transform: uppercase;
             margin-bottom: 10px;
         }
-        .search {
-            display: flex;
-            gap: 8px;
-        }
         .search input {
-            flex: 1;
+            width: 100%;
             padding: 10px 14px;
             border-radius: 8px;
             border: none;
@@ -43,9 +46,11 @@
             color: white;
             font-size: 15px;
             outline: none;
+            margin-bottom: 8px;
         }
         .search input::placeholder { color: rgba(255,255,255,0.6); }
         .search button {
+            width: 100%;
             padding: 10px 18px;
             border-radius: 8px;
             border: none;
@@ -82,60 +87,62 @@
 </head>
 <body>
 <div class="card">
-    <div class="header">
-        <p>Weather App</p>
-        <div class="search">
-            <form method="POST" style="display:flex;flex-wrap:wrap; gap:8px; width:100%">
-                <input type="text" name="city" placeholder="Enter city...">
-                <input type="text" name="country" placeholder="Country (IE, US, DE...)" list="countries" autocomplete="off">
-                <datalist id="countries">
-                  <option value="AU" label="Australia">
-                  <option value="AT" label="Austria">
-                  <option value="BE" label="Belgium">
-                  <option value="BR" label="Brazil">
-                  <option value="BG" label="Bulgaria">
-                  <option value="CA" label="Canada">
-                  <option value="CL" label="Chile">
-                  <option value="CN" label="China">
-                  <option value="HR" label="Croatia">
-                  <option value="CZ" label="Czech Republic">
-                  <option value="DK" label="Denmark">
-                  <option value="EG" label="Egypt">
-                  <option value="FI" label="Finland">
-                  <option value="FR" label="France">
-                  <option value="DE" label="Germany">
-                  <option value="GR" label="Greece">
-                  <option value="HU" label="Hungary">
-                  <option value="IN" label="India">
-                  <option value="IE" label="Ireland">
-                  <option value="IT" label="Italy">
-                  <option value="JP" label="Japan">
-                  <option value="KZ" label="Kazakhstan">
-                  <option value="LV" label="Latvia">
-                  <option value="LT" label="Lithuania">
-                  <option value="MY" label="Malaysia">
-                  <option value="MX" label="Mexico">
-                  <option value="NL" label="Netherlands">
-                  <option value="NZ" label="New Zealand">
-                  <option value="NG" label="Nigeria">
-                  <option value="NO" label="Norway">
-                  <option value="PL" label="Poland">
-                  <option value="PT" label="Portugal">
-                  <option value="RO" label="Romania">
-                  <option value="SA" label="Saudi Arabia">
-                  <option value="RS" label="Serbia">
-                  <option value="ZA" label="South Africa">
-                  <option value="ES" label="Spain">
-                  <option value="SE" label="Sweden">
-                  <option value="CH" label="Switzerland">
-                  <option value="TR" label="Turkey">
-                  <option value="UA" label="Ukraine">
-                  <option value="GB" label="United Kingdom">
-                  <option value="US" label="United States">
-                  <option value="VN" label="Vietnam">
-                </datalist>
-                <button type="submit">Search</button>
-            </form>
+    <div class="header" {% if photo %}style="background-image: url('{{ photo }}'); background-size: cover; background-position: center;"{% endif %}>
+        <div class="header-overlay">
+            <p>Weather App</p>
+            <div class="search">
+                <form method="POST">
+                    <input type="text" name="city" placeholder="Enter city...">
+                    <input type="text" name="country" placeholder="Country (IE, US, DE...)" list="countries" autocomplete="off">
+                    <datalist id="countries">
+                      <option value="AU" label="Australia">
+                      <option value="AT" label="Austria">
+                      <option value="BE" label="Belgium">
+                      <option value="BR" label="Brazil">
+                      <option value="BG" label="Bulgaria">
+                      <option value="CA" label="Canada">
+                      <option value="CL" label="Chile">
+                      <option value="CN" label="China">
+                      <option value="HR" label="Croatia">
+                      <option value="CZ" label="Czech Republic">
+                      <option value="DK" label="Denmark">
+                      <option value="EG" label="Egypt">
+                      <option value="FI" label="Finland">
+                      <option value="FR" label="France">
+                      <option value="DE" label="Germany">
+                      <option value="GR" label="Greece">
+                      <option value="HU" label="Hungary">
+                      <option value="IN" label="India">
+                      <option value="IE" label="Ireland">
+                      <option value="IT" label="Italy">
+                      <option value="JP" label="Japan">
+                      <option value="KZ" label="Kazakhstan">
+                      <option value="LV" label="Latvia">
+                      <option value="LT" label="Lithuania">
+                      <option value="MY" label="Malaysia">
+                      <option value="MX" label="Mexico">
+                      <option value="NL" label="Netherlands">
+                      <option value="NZ" label="New Zealand">
+                      <option value="NG" label="Nigeria">
+                      <option value="NO" label="Norway">
+                      <option value="PL" label="Poland">
+                      <option value="PT" label="Portugal">
+                      <option value="RO" label="Romania">
+                      <option value="SA" label="Saudi Arabia">
+                      <option value="RS" label="Serbia">
+                      <option value="ZA" label="South Africa">
+                      <option value="ES" label="Spain">
+                      <option value="SE" label="Sweden">
+                      <option value="CH" label="Switzerland">
+                      <option value="TR" label="Turkey">
+                      <option value="UA" label="Ukraine">
+                      <option value="GB" label="United Kingdom">
+                      <option value="US" label="United States">
+                      <option value="VN" label="Vietnam">
+                    </datalist>
+                    <button type="submit">Search</button>
+                </form>
+            </div>
         </div>
     </div>
     <div class="body">
